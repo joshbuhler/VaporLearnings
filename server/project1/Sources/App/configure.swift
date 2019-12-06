@@ -1,5 +1,5 @@
-import Vapor
 import Leaf
+import Vapor
 
 /// Called before your application initializes.
 ///
@@ -9,12 +9,16 @@ public func configure(
     _ env: inout Environment,
     _ services: inout Services
 ) throws {
-    // Register routes to the router
+    // register routes to the router
     let router = EngineRouter.default()
     try routes(router)
     services.register(router, as: Router.self)
-
-    // Configure the rest of your application here
+    
+    // configure your application here
     try services.register(LeafProvider())
     config.prefer(LeafRenderer.self, for: ViewRenderer.self)
+
+    var middleware = MiddlewareConfig.default()
+    middleware.use(FileMiddleware.self)
+    services.register(middleware)
 }
