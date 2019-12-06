@@ -1,0 +1,11 @@
+<html>
+    <title>#get(title) - Million Hairs</title>
+
+<body>
+
+    <h1>#get(h1)</h1>
+    #get(body)
+    #embed("footer")
+
+</body>
+</html>
