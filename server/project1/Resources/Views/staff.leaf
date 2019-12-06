@@ -9,6 +9,13 @@
     <p>We don't know that person.</p>
 }
 
+<p>Choose a staff member to view:</p>
+<ul>
+    #for(name in allNames) {
+        <li><a href="/staff/#(name)">#capitalize(name)</a></li>
+    }
+</ul>
+
 #embed("footer")
 
 </body>
