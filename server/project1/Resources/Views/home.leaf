@@ -1,5 +1,9 @@
 <html>
 <body>
+
 <h1>Welcome to Million Hairs</h1>
+
+#embed("footer")
+
 </body>
 </html>
