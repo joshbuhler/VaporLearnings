@@ -1,0 +1,15 @@
+<html>
+<body>
+
+#if(name) {
+    <h1>#capitalize(name)</h1>
+    <p>#(bio)</p>
+} else {
+    <h1>Unknown staff member</h1>
+    <p>We don't know that person.</p>
+}
+
+#embed("footer")
+
+</body>
+</html>
