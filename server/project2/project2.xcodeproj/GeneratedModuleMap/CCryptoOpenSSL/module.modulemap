@@ -1,0 +1,4 @@
+module CCryptoOpenSSL {
+    umbrella "/Users/joshuabuhler/Projects/_jb/Vapor/server/project2/.build/checkouts/crypto/Sources/CCryptoOpenSSL/include"
+    export *
+}
