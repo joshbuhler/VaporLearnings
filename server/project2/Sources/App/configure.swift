@@ -1,4 +1,6 @@
 import Vapor
+import Fluent
+import FluentSQLite
 
 /// Called before your application initializes.
 ///
@@ -12,6 +14,15 @@ public func configure(
     let router = EngineRouter.default()
     try routes(router)
     services.register(router, as: Router.self)
+    
+    let directoryConfig = DirectoryConfig.detect()
+    services.register(directoryConfig)
 
     // Configure the rest of your application here
+    try services.register(FluentSQLiteProvider())
+    
+    var databaseConfig = DatabasesConfig()
+    let db = try SQLiteDatabase(storage: .file(path: "\(directoryConfig.workDir)polls.db"))
+    databaseConfig.add(database: db, as: .sqlite)
+    services.register(databaseConfig)
 }
