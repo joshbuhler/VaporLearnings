@@ -25,4 +25,9 @@ public func configure(
     let db = try SQLiteDatabase(storage: .file(path: "\(directoryConfig.workDir)polls.db"))
     databaseConfig.add(database: db, as: .sqlite)
     services.register(databaseConfig)
+    
+    var migrationConfig = MigrationConfig()
+    migrationConfig.add(model: Poll.self,
+                        database: .sqlite)
+    services.register(migrationConfig)
 }
