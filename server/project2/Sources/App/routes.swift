@@ -28,6 +28,21 @@ public func routes(_ router: Router) throws {
         }
     }
     
+    router.delete("polls", UUID.parameter) { req -> Future<Poll> in
+        let id = try req.parameters.next(UUID.self)
+        
+        return Poll.find(id, on: req).flatMap { poll in
+            guard let poll = poll else {
+                throw Abort(.notFound)
+            }
+            
+            return poll.delete(on: req).map {
+                return poll
+            }
+        }
+    }
+    
+    
     router.post("polls", "vote", UUID.parameter, Int.parameter) { req -> Future<Poll> in
         let id = try req.parameters.next(UUID.self)
         let vote = try req.parameters.next(Int.self)
