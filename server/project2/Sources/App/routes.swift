@@ -17,6 +17,17 @@ public func routes(_ router: Router) throws {
         return Poll.query(on: req).all()
     }
     
+    router.get("polls", "single", UUID.parameter) { req -> Future<Poll> in
+        let id = try req.parameters.next(UUID.self)
+        return Poll.find(id, on: req).map(to: Poll.self) { poll in
+            guard let poll = poll else {
+                throw Abort(.notFound)
+            }
+            
+            return poll
+        }
+    }
+    
     router.post("polls", "vote", UUID.parameter, Int.parameter) { req -> Future<Poll> in
         let id = try req.parameters.next(UUID.self)
         let vote = try req.parameters.next(Int.self)
