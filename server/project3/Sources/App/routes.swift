@@ -14,4 +14,8 @@ public func routes(_ router: Router) throws {
         let article = try req.parameters.next(Article.self)
         return "Loading article: \(article.title)"
     }
+    
+    router.get("articles", Article.parameter, "json") { req -> Article in
+        return try req.parameters.next(Article.self)
+    }
 }

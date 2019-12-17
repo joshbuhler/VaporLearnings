@@ -8,7 +8,7 @@
 import Foundation
 import Vapor
 
-struct Article:Parameter {
+struct Article:Parameter, Content {
     typealias ResolvedParameter = Article
     
     var id:Int
