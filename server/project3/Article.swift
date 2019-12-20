@@ -14,19 +14,16 @@ struct Article:Parameter, Content {
     var id:Int
     var title:String
     
-    init (id:String) {
-        if let intID = Int(id) {
-            self.id = intID
-            self.title = "Custom params are spiffy"
-        } else {
-            self.id = 0
-            self.title = "whomp womp"
-        }
+    init (id:Int) {
+        self.id = id
+        self.title = "Custom params are spiffy"
     }
     
     static func resolveParameter(_ parameter: String, on container: Container) throws -> Article {
-        print ("Article.ResolvedParameter")
-        return Article(id: parameter)
+        if let id = Int(parameter) {
+            return Article(id: id)
+        }
+        throw Abort(.badRequest)
     }
     
 //    static func resolveParameter(_ parameter:String, on container:Container) throws -> Future<Article?> {
