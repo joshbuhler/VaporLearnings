@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		5C09462A23AC709D009255BE /* AdminRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C09462923AC709D009255BE /* AdminRoutes.swift */; };
 		5C6B8FEC23A93A8E00535356 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6B8FEB23A93A8E00535356 /* Article.swift */; };
 		OBJ_1002 /* base32.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_343 /* base32.c */; };
 		OBJ_1008 /* bcrypt.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_347 /* bcrypt.c */; };
@@ -4044,6 +4045,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5C09462923AC709D009255BE /* AdminRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminRoutes.swift; sourceTree = "<group>"; };
 		5C6B8FEB23A93A8E00535356 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		"Console::Command::Product" /* Command.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Command.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"Console::Console::Product" /* Console.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Console.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -6576,7 +6578,7 @@
 			path = Logging;
 			sourceTree = "<group>";
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -6591,7 +6593,6 @@
 				OBJ_721 /* README.md */,
 				OBJ_722 /* circle.yml */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_501 /* Bits */ = {
@@ -7143,6 +7144,7 @@
 				OBJ_9 /* boot.swift */,
 				OBJ_10 /* configure.swift */,
 				OBJ_11 /* routes.swift */,
+				5C09462923AC709D009255BE /* AdminRoutes.swift */,
 			);
 			name = App;
 			path = Sources/App;
@@ -8582,7 +8584,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_675 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -9497,6 +9499,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				5C09462A23AC709D009255BE /* AdminRoutes.swift in Sources */,
 				5C6B8FEC23A93A8E00535356 /* Article.swift in Sources */,
 				OBJ_728 /* boot.swift in Sources */,
 				OBJ_729 /* configure.swift in Sources */,
