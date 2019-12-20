@@ -28,4 +28,16 @@ public func routes(_ router: Router) throws {
             return "Hello, kitty"
         }
     }
+    
+    router.group("article", Int.parameter) { group in
+        group.get ("read") { req -> String in
+            let num = try req.parameters.next(Int.self)
+            return "Reading article: \(num)"
+        }
+        
+        group.get ("edit") { req -> String in
+            let num = try req.parameters.next(Int.self)
+            return "Editing article: \(num)"
+        }
+    }
 }
