@@ -24,8 +24,14 @@ struct Article:Parameter, Content {
         }
     }
     
-    static func resolveParameter(_ parameter: String, on container: Container) throws -> Article.ResolvedParameter {
-        
+    static func resolveParameter(_ parameter: String, on container: Container) throws -> Article {
+        print ("Article.ResolvedParameter")
         return Article(id: parameter)
     }
+    
+//    static func resolveParameter(_ parameter:String, on container:Container) throws -> Future<Article?> {
+//
+//        print ("Future<Article?>")
+//        return Future.map(on: container) { Article(id: parameter)}
+//    }
 }
