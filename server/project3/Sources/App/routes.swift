@@ -33,4 +33,9 @@ public func routes(_ router: Router) throws {
         let title = try req.parameters.next(String.self)
         return "Saving article: \(id) - \(title)"
     }
+    
+    router.get("articles", Article.parameter) { req -> Article in
+        return try req.parameters.next(Article.self)
+        
+    }
 }
