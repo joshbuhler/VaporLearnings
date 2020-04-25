@@ -8,9 +8,6 @@ public func routes(_ router: Router) throws {
     router.get("hello") { req in
         return "Hello, world!"
     }
-    router.get("hello", "world") { req in
-        return "Hello, world! 2"
-    }
     
     router.get("greetings", String.parameter) { req -> String in
         let name = try req.parameters.next(String.self)
@@ -44,6 +41,38 @@ public func routes(_ router: Router) throws {
             
             return article
         }
+    }
+    
+    router.group("hello") { group in
+        group.get("world") { req in
+            return "Hello world"
+        }
         
+        group.get("kitty") { req in
+            return "Hello kitty"
+        }
+    }
+    
+    // Method #1 of grouping
+    router.group("article", Int.parameter) { group in
+        group.get("read") { req -> String in
+            let num = try req.parameters.next(Int.self)
+            return "Reading article \(num)"
+        }
+        group.get("edit") { req -> String in
+            let num = try req.parameters.next(Int.self)
+            return "Editing article \(num)"
+        }
+    }
+    
+    // Method #2 of grouping
+    let article = router.grouped("blog", Int.parameter)
+    article.get("read") { req -> String in
+        let num = try req.parameters.next(Int.self)
+        return "Reading article \(num)"
+    }
+    article.get("edit") { req -> String in
+        let num = try req.parameters.next(Int.self)
+        return "Editing article \(num)"
     }
 }
