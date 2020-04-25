@@ -16,17 +16,17 @@ struct Article:Parameter, Content {
     var id:Int
     var title:String
     
-    init(id:String) {
-        if let intID = Int(id) {
-            self.id = intID
-            self.title = "Hey howdy hey"
-        } else {
-            self.id = 0
-            self.title = "Unknown article"
-        }
+    init(id:Int) {
+        self.id = id
+        self.title = "Hey howdy hey"
     }
     
     static func resolveParameter(_ parameter: String, on container: Container) throws -> Future<Article?> {
-        return Future.map(on: container) { Article(id: parameter) }
+        
+        guard let id = Int(parameter) else {
+            throw Abort(.badRequest)
+        }
+        
+        return Future.map(on: container) { Article(id: id) }
     }
 }
