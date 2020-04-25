@@ -9,7 +9,9 @@ import Foundation
 import Vapor
 
 struct Article:Parameter, Content {
-    typealias ResolvedParameter = Article
+    
+    
+    typealias ResolvedParameter = Future<Article?>
     
     var id:Int
     var title:String
@@ -24,7 +26,7 @@ struct Article:Parameter, Content {
         }
     }
     
-    static func resolveParameter(_ parameter: String, on container: Container) throws -> ResolvedParameter {
-        return Article(id: parameter)
+    static func resolveParameter(_ parameter: String, on container: Container) throws -> Future<Article?> {
+        return Future.map(on: container) { Article(id: parameter) }
     }
 }

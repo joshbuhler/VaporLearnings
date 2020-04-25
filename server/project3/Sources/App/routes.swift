@@ -34,8 +34,16 @@ public func routes(_ router: Router) throws {
         return "Saving article: \(id) - \(title)"
     }
     
-    router.get("articles", Article.parameter) { req -> Article in
-        return try req.parameters.next(Article.self)
+    router.get("articles", Article.parameter) { req -> Future<Article> in
+        let article = try req.parameters.next(Article.self)
+        
+        return article.map(to: Article.self) { article in
+            guard let article = article else {
+                throw Abort(.badRequest)
+            }
+            
+            return article
+        }
         
     }
 }
