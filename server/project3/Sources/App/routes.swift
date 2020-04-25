@@ -75,4 +75,24 @@ public func routes(_ router: Router) throws {
         let num = try req.parameters.next(Int.self)
         return "Editing article \(num)"
     }
+    
+    try router.grouped("admin").register(collection: AdminCollection())
+}
+
+final class AdminCollection: RouteCollection {
+    func boot(router: Router) throws {
+        
+        let article = router.grouped("product", Int.parameter)
+        
+        article.get("list") { req -> String in
+            let num = try req.parameters.next(Int.self)
+            return "Listing product \(num)"
+        }
+        article.get("edit") { req -> String in
+            let num = try req.parameters.next(Int.self)
+            return "Editing product \(num)"
+        }
+    }
+    
+    
 }
